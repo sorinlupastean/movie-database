@@ -80,6 +80,7 @@ if ($current_page != 'index.php' && $current_page != 'contact.php') {
 
     <?php
 
-    $movies = json_decode(file_get_contents('./assets/movies-list-db.json'), true)['movies']; ;
-    $i =0;
+     if ($current_page != 'index.php' && $current_page != 'contact.php') {
+         $movies = json_decode(file_get_contents('./assets/movies-list-db.json'), true)['movies'];
+     }
     ?>
