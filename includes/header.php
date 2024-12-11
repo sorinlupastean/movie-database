@@ -79,30 +79,7 @@ if ($current_page != 'index.php' && $current_page != 'contact.php') {
     </nav>
 
     <?php
-    $movies = [
-      [
-        'id' => 1,
-        'title' => 'Avatar',
-        'description' => 'Jake Sully explores Pandora with an avatar. He must choose
-                between his human and Navi loyalties',
-        'image' => 'https://lesserjoke.home.blog/wp-content/uploads/2019/07/49192829_10101658517075357_4372534237862035456_o.jpg',
-        'link' => 'movie-1.php'
-      ],
-      [
-        'id' => 2,
-        'title' => 'Avatar | The Way of Water',
-        'description' => 'Jake Sully s family faces new threats on Pandora. They must
-                protect their world from an old enemy',
-        'image' => 'https://media.fstatic.com/_HaK1yHncaWbspr1Mmh68vK5bcM=/322x478/smart/filters:format(webp)/media/movies/covers/2023/01/FVESicTWUAA57gu.jpg',
-        'link' => 'movie-2.php'
-      ], 
-      [
-        'id' => 3,
-        'title' => 'Meet the Robinsons',
-        'description' => 'A young inventor meets his future family. An adventure unfolds that changes his life forever',
-        'image' => 'https://m.media-amazon.com/images/M/MV5BMjQyNzdmNmUtODkwMi00NWM2LWIzNTAtMWY3OTVmM2Q5NTUyXkEyXkFqcGdeQXVyNjExODE1MDc@._V1_FMjpg_UX1000_.jpg',
-        'link' => 'movie-3.php'
-      ]
-    ] ;
+
+    $movies = json_decode(file_get_contents('./assets/movies-list-db.json'), true)['movies']; ;
     $i =0;
     ?>
