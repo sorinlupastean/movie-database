@@ -14,17 +14,53 @@ if(isset($_GET['movie_id'])) {
     if ($movie) {
         
         ?>
-        <div class="container">
-            <h1><?php echo htmlspecialchars($movie['title']); ?></h1>
-            <img src="<?php echo htmlspecialchars($movie['image']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>" class="img-fluid" />
-            <p><?php echo htmlspecialchars($movie['description'] ?? $movie['plot']); ?></p>
+        <div class="container mt-5">
+    <div class="row">
+        <!-- Posterul filmului -->
+        <div class="col-md-4">
+            <img src="<?php echo htmlspecialchars($movie['posterUrl']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>" class="img-fluid rounded" />
         </div>
+
+        <!-- Detalii despre film -->
+        <div class="col-md-8">
+            <h1><?php echo htmlspecialchars($movie['title']); ?></h1>
+            <p><?php echo htmlspecialchars($movie['year'] ?? 'Unknown'); ?></p>
+            <p><strong>Runtime:</strong> <?php echo htmlspecialchars($movie['runtime'] ?? 'Unknown'); ?> minutes</p>
+            <p><?php echo htmlspecialchars($movie['description'] ?? $movie['plot'] ?? 'No description available.'); ?></p>
+            <p><strong>Director:</strong> <?php echo htmlspecialchars($movie['director'] ?? 'Unknown'); ?></p>
+
+            <p><strong>Actors:</strong></p>
+            <ul>
+                <?php 
+                $actors = explode(',', $movie['actors'] ?? '');
+                foreach ($actors as $actor): ?>
+                    <li><?php echo htmlspecialchars(trim($actor)); ?></li>
+                <?php endforeach; ?>
+            </ul>
+
+            <p><strong>Genres:</strong> <?php echo htmlspecialchars(implode(', ', $movie['genres'] ?? [])); ?></p>
+        </div>
+    </div>
+</div>
         <?php
     } else {
-        echo "<p>Filmul nu a fost găsit.</p>";
+        ?>
+        <div class="container mt-5 text-center">
+            <h2>Filmul nu a fost găsit.</h2>
+            <p>Vă rugăm să verificați ID-ul filmului sau să reveniți la pagina de filme.</p>
+            <a href="movies.php" class="btn btn-primary">Înapoi la pagina de filme</a>
+        </div>
+        <?php
     }
 } else {
-    echo "<p>Niciun film selectat.</p>";
+    // Afișează mesaj de eroare dacă parametrul lipsește
+    ?>
+    <div class="container mt-5 text-center">
+        <h2>Parametrul lipsește.</h2>
+        <p>Vă rugăm să accesați un film valid din pagina de filme.</p>
+        <a href="movies.php" class="btn btn-primary">Înapoi la pagina de filme</a>
+    </div>
+    <?php
 }
 
 include 'includes/footer.php';

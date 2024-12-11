@@ -34,3 +34,22 @@ body {
   text-align: center;
   padding: 10px 0;
 }
+
+h1 {
+  font-size: 2.5rem; /* Mărește dimensiunea titlului */
+  font-weight: bold;
+}
+
+p,
+li {
+  font-size: 1.2rem; /* Mărește dimensiunea textului descriptiv */
+  line-height: 1.6; /* Mărește spațiul între rânduri */
+}
+
+ul {
+  padding-left: 20px; /* Adaugă spațiu la listă pentru aliniere mai bună */
+}
+
+li {
+  margin-bottom: 0.5rem; /* Adaugă spațiu între elementele listei */
+}

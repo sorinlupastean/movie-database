@@ -1,7 +1,7 @@
 <div class="col-lg-3 col-md-4" id="movie-<?php echo $movie['id']; ?>">
           <div class="card mb-4">
             <img
-              src="<?php echo $movie['image']; ?>"
+              src="<?php echo $movie['posterUrl']; ?>"
               class="card-img-top img-fluid w-100"
               alt="<?php echo $movie['title'];?>"
             />
